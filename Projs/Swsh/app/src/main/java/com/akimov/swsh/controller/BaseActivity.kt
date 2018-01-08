@@ -1,4 +1,4 @@
-package com.akimov.swsh
+package com.akimov.swsh.controller
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
