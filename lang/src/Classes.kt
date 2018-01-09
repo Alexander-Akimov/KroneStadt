@@ -1,3 +1,14 @@
+class CarClass constructor(make: String, model: String) {
+    val make = make
+    val model = model
+}
+
+fun main1(args: Array<String>) {
+    val car = CarClass("Toyota", "Avalon")
+    println(car.make)
+    println(car.model)
+}
+
 //class Car(val make: String, val model: String, var color: String) {
 //    fun accelerate() {
 //        println("vroom vroom")
@@ -12,7 +23,7 @@
 //    fun tow() {
 //        println("taking the horses to the rodeo")
 //    }
-//
+//s
 //    fun details() {
 //        println("The $make $model has a towing capacity of $towingCapacity lbs")
 //    }
