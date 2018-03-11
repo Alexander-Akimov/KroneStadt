@@ -7,7 +7,7 @@
     tools:context="com.akimov.coderswag.controller.MainActivity">
 
     <TextView
-        android:id="@+id/categoryTxt"
+        android:id="@+id/categoryName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="24dp"
@@ -28,6 +28,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoryTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/categoryName" />
 
 </android.support.constraint.ConstraintLayout>
