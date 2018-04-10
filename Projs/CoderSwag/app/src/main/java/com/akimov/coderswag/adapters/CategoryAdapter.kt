@@ -13,10 +13,7 @@ import com.akimov.coderswag.model.Category
 /**
  * Created by lex on 3/11/18.
  */
-class CategoryAdapter(context: Context, categories: List<Category>) : BaseAdapter() {
-
-  val context = context
-  val categories = categories
+class CategoryAdapter(val context: Context, val categories: List<Category>) : BaseAdapter() {
 
   // IOS: row at index path
   // position like index path - number that corresponds to the specific row that is being displayed
