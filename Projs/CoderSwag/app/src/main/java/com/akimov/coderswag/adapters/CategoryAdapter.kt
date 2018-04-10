@@ -15,53 +15,63 @@ import com.akimov.coderswag.model.Category
  */
 class CategoryAdapter(context: Context, categories: List<Category>) : BaseAdapter() {
 
-    val context = context
-    val categories = categories
+  val context = context
+  val categories = categories
 
-    // IOS: row at index path
-    // position like index path - number that corresponds to the specific row that is being displayed
-    // convertView - view that is displayed over and over
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val categoryView: View
-        val holder: ViewHolder
+  // IOS: row at index path
+  // position like index path - number that corresponds to the specific row that is being displayed
+  // convertView - view that is displayed over and over
+  override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+    val categoryView: View
+    val holder: ViewHolder
 
-        if (convertView == null) {
-            categoryView = LayoutInflater.from(context).inflate(R.layout.category_list_item, null)
-            holder = ViewHolder()
-            holder.categoryImage = categoryView.findViewById(R.id.categoryImage)
-            holder.categoryName = categoryView.findViewById(R.id.categoryName)
-            println("I exist for the first time!")
-            categoryView.tag = holder
-        } else {
-            holder = convertView.tag as ViewHolder
-            categoryView = convertView
-            println("Go green, recycle!")
-        }
-
-        val category = categories[position]
-
-        val resourceId = context.resources.getIdentifier(category.image, "drawable", context.packageName)
-        holder.categoryImage?.setImageResource(resourceId)
-        holder.categoryName?.text = category.title
-        return categoryView
+    if (convertView == null) {
+      categoryView = LayoutInflater.from(context).inflate(R.layout.category_list_item, null)
+      holder = ViewHolder()
+      holder.categoryImage = categoryView.findViewById(R.id.categoryImage)
+      holder.categoryName = categoryView.findViewById(R.id.categoryName)
+      println("I exist for the first time!")
+      categoryView.tag = holder
+    } else {
+      holder = convertView.tag as ViewHolder
+      categoryView = convertView
+      println("Go green, recycle!")
     }
 
-    override fun getItem(position: Int): Any {
-        return categories[position]
-    }
+    val category = categories[position]
 
-    override fun getItemId(position: Int): Long {
-        return 0
-    }
+    //val resourceId = context.resources.getIdentifier(category.image, "drawable", context.packageName)
 
-    //IOS: number of rows in section for a table View
-    override fun getCount(): Int {// this function is telling the listView how many rows that is going
-        return categories.count() // to be displaying
-    }
+    val res = R.drawable::class.java
+    val field = res.getField(category.image)
+    val resourceId = field.getInt(null)
 
-    private class ViewHolder {
-        var categoryImage: ImageView? = null
-        var categoryName: TextView? = null
+    holder.bindCategoryView(resourceId, category.title)
+    return categoryView
+  }
+
+  override fun getItem(position: Int): Any {
+    return categories[position]
+  }
+
+  override fun getItemId(position: Int): Long {
+    return 0
+  }
+
+  //IOS: number of rows in section for a table View
+  override fun getCount(): Int {// this function is telling the listView how many rows that is going
+    return categories.count() // to be displaying
+  }
+
+  private class ViewHolder {
+    var categoryImage: ImageView? = null
+    var categoryName: TextView? = null
+    fun bindCategoryView(resourceId: Int, text: String) {
+
+
+      categoryImage?.setImageResource(resourceId)
+      categoryName?.text = text
     }
+  }
 
 }

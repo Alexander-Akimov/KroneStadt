@@ -9,4 +9,3 @@ fun main(args: Array<String>) {
     println("The oldesst is: $oldest")
 }
 
-data class Person(val name: String, val age: Int? = null)
