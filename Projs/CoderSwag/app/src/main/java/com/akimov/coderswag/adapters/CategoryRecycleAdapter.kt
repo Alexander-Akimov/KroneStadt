@@ -25,15 +25,14 @@ class CategoryRecycleAdapter(val context: Context, val categories: List<Category
   override fun getItemCount() = categories.count()
 
   inner class Holder(itemView: View?, val itemClick: (Category) -> Unit) : RecyclerView.ViewHolder(itemView) {
-    val categoryImage = itemView?.findViewById<ImageView>(R.id.categoryImage)
-    val categoryName = itemView?.findViewById<TextView>(R.id.categoryName)
+   // val categoryImage = itemView?.findViewById<ImageView>(R.id.categoryImage)
+   // val categoryName = itemView?.findViewById<TextView>(R.id.categoryName)
 
     fun bindCategory(category: Category, context: Context) {
       val resourceId = context.resources.getIdentifier(category.image, "drawable", context.packageName)
 
-      categoryImage?.setImageResource(resourceId)
-      categoryName?.text = category.title
-
+      itemView.categoryImage?.setImageResource(resourceId)
+      itemView.categoryName?.text = category.title
       itemView.setOnClickListener { itemClick(category) }
     }
   }

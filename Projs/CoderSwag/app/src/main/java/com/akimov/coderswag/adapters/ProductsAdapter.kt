@@ -25,16 +25,16 @@ class ProductsAdapter(val context: Context, val products: List<Product>) : Recyc
   }
 
   inner class ProductViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-    val productImage = itemView?.findViewById<ImageView>(R.id.productImage)
-    val productName = itemView?.findViewById<TextView>(R.id.productName)
-    val productPrice = itemView?.findViewById<TextView>(R.id.productPrice)
+//    val productImage = itemView?.findViewById<ImageView>(R.id.productImage)
+//    val productName = itemView?.findViewById<TextView>(R.id.productName)
+//    val productPrice = itemView?.findViewById<TextView>(R.id.productPrice)
 
     fun bindProductView(product: Product, context: Context) =
         with(product) {
           val resourceId = context.resources.getIdentifier(image, "drawable", context.packageName)
-          productImage?.setImageResource(resourceId)
-          productName?.text = title
-          productPrice?.text = price
+          itemView.productImage?.setImageResource(resourceId)
+          itemView.productName?.text = title
+          itemView.productPrice?.text = price
         }
 
 
