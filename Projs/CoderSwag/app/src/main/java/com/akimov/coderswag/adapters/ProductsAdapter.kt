@@ -36,7 +36,5 @@ class ProductsAdapter(val context: Context, val products: List<Product>) : Recyc
           itemView.productName?.text = title
           itemView.productPrice?.text = price
         }
-
-
   }
 }
